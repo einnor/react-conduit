@@ -1,4 +1,4 @@
-import ArticleList from '../ArticleList';
+import ArticleList from './ArticleList';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 const MainView = props => {
   return (
-    <div className="col-md=9">
+    <div className="col-md-9">
       <div className="feed-toggle">
         <ul className="nav nav-pills outline-active">
           <li className="nav-item">

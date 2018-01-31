@@ -1,5 +1,5 @@
 import Header from './Header';
-//import Home from './Home';
+import Home from './Home';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -12,6 +12,8 @@ class App extends Component {
     return (
       <div>
         <Header appName={ this.props.appName } />
+
+        <Home />
       </div>
     );
   }

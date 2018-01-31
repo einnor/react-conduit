@@ -20,7 +20,7 @@ const ArticleList = props => {
           return (
             <h2>{ article.title }</h2>
           );
-        });
+        })
       }
     </div>
   );

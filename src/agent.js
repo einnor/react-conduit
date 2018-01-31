@@ -1,7 +1,7 @@
 import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
-const superagent = superagentPromise(_superagetn,global.Promise);
+const superagent = superagentPromise(_superagent,global.Promise);
 
 const API_ROOT = 'https://conduit.productionready.io/api';
 
@@ -12,7 +12,7 @@ const requests = {
 };
 
 const Articles = {
-  all: page => requests.get(`/articles?limit=10`);
+  all: page => requests.get(`/articles?limit=10`)
 };
 
 export default { Articles };
