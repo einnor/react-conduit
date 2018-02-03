@@ -17,7 +17,7 @@ class Login extends Component {
 
     this.changeEmail = event => this.props.onChangeEmail(event.target.value);
     this.changePassword = event => this.props.onChangePassword(event.target.value);
-    this.submitForm = (email, password) = event => {
+    this.submitForm = (email, password) => event => {
       event.preventDefault();
       this.props.onSubmit(email, password);
     };
@@ -80,4 +80,4 @@ class Login extends Component {
   }
 }
 
-export default connect(() => ({}), () => ({}))(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
