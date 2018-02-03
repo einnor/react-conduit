@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const mapStateToProps = state => ({
-  appName: state.appName
+  appName: state.common.appName
 });
 
 class App extends Component {

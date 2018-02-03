@@ -5,7 +5,7 @@ import agent from '../../agent';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-  appName: state.appName
+  appName: state.common.appName
 });
 
 const mapDispatchToProps = dispatch => ({
