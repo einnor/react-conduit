@@ -1,7 +1,9 @@
 import Header from './Header';
 import Home from './Home';
+import Login from './Login';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const mapStateToProps = state => ({
   appName: state.appName
@@ -10,11 +12,14 @@ const mapStateToProps = state => ({
 class App extends Component {
   render() {
     return (
-      <div>
-        <Header appName={ this.props.appName } />
+      <Router>
+        <div>
+          <Header appName={ this.props.appName } />
 
-        <Home />
-      </div>
+          <Route exact path="/" component={ Home } />
+          <Route path="/login" component={ Login } />
+        </div>
+      </Router>
     );
   }
 }
