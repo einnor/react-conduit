@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ListErrors extends React {
+class ListErrors extends Component {
   render() {
     const { errors } = this.props;
     if (errors) {
