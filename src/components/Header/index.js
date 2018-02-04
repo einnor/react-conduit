@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { Component} from 'react';
+import LoggedInView from './LoggedInView';
+import LoggedOutView from './LoggedOutView';
 
 class Header extends Component {
   render() {
@@ -11,19 +13,8 @@ class Header extends Component {
             {this.props.appName.toLowerCase()}
           </Link>
 
-          <ul className="nav navbar-nav pull-xs-right">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="login" className="nav-link">
-                Sign in
-              </Link>
-            </li>
-          </ul>
+          <LoggedOutView currentUser={ this.props.currentUser } />
+          <LoggedInView currentUser={ this.props.currentUser } />
 
         </div>
       </nav>

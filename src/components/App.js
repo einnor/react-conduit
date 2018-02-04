@@ -40,7 +40,9 @@ class App extends Component {
     return (
       <Router history={ history }>
         <div>
-          <Header appName={ this.props.appName } />
+          <Header
+            appName={ this.props.appName }
+            currentUser={ this.props.currentUser} />
 
           <Route exact path="/" component={ Home } />
           <Route exact path="/login" component={ Login } />
