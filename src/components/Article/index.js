@@ -1,6 +1,5 @@
 import ArticleMeta from './ArticleMeta';
 import CommentContainer from './CommentContainer';
-import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
@@ -18,9 +17,10 @@ const mapDispatchToProps = dispatch => ({
 
 class Article extends Component {
   componentWillMount() {
-    this.porps.onLoad(Promise.all([
-      agent.Articles.get(this.props.params.id),
-      agent.Comments.forArticle(this.props.params.id)
+    console.log(this.props);
+    this.props.onLoad(Promise.all([
+      agent.Articles.get(this.props.match.params.id),
+      agent.Comments.forArticle(this.props.match.params.id)
     ]));
   }
 
@@ -79,7 +79,7 @@ class Article extends Component {
             <CommentContainer
               comments={ this.props.comments || [] }
               errors={ this.props.commentErrors }
-              slug={ this.props.params.id }
+              slug={ this.props.match.params.id }
               currentUser={ this.props.currentUser } />
           </div>
         </div>
