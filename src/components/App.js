@@ -1,6 +1,7 @@
 import Header from './Header';
 import Home from './Home';
 import Login from './Login';
+import Register from './Register';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
@@ -46,6 +47,7 @@ class App extends Component {
 
           <Route exact path="/" component={ Home } />
           <Route exact path="/login" component={ Login } />
+          <Route exact path="/register" component={ Register } />
         </div>
       </Router>
     );
