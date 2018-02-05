@@ -9,6 +9,14 @@ export default (state = {}, action) => {
       };
     case 'ARTICLE_PAGE_UNLOADED':
       return {};
+    case 'ADD_COMMENT':
+      return {
+        ...state,
+        commentErrors: action.error ? action.payload.errors : null,
+        comments: action.error ? 
+          null :
+          (state.comments || []).concat([action.payload.comment])
+      };
     default:
       return state;
   }
