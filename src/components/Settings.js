@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
+import SettingsForm from './SettingsForm';
 
 const mapStateToProps = state => ({
   ...state.settings,
@@ -10,8 +11,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickLogout: () => dispatch({ type: 'LOGOUT' });
-  onSubmitForm: user => dispatch({ type: 'SETTINGS_SAVED', payload: agent.Auth.save(user)} );
+  onClickLogout: () => dispatch({ type: 'LOGOUT' }),
+  onSubmitForm: user => dispatch({ type: 'SETTINGS_SAVED', payload: agent.Auth.save(user)} )
 });
 
 class Settings extends Component {
