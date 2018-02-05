@@ -14,7 +14,12 @@ const requests = {
 };
 
 const Articles = {
-  all: page => requests.get(`/articles?limit=10`)
+  all: page => requests.get(`/articles?limit=10`),
+  get: slug => requests.get(`/articles/${slug}`)
+};
+
+const Comments = {
+  forAticle: slug => requests.get(`/articles/${slug}/comments`)
 };
 
 const Auth = {
@@ -34,6 +39,7 @@ let tokenPlugin = req => {
 
 export default {
   Articles,
+  Comments,
   Auth,
   setToken: _token => { token = _token; }
  };
