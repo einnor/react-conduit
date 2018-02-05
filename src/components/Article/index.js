@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
   currentUser: state.common.currentUser
 });
 
-const mapDispatchToProps = state => ({
+const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({ type: 'ARTICLE_PAGE_LOADED', payload }),
   onUnload: () => dispatch({ type: 'ARTICLE_PAGE_UNLOADED' })
 });

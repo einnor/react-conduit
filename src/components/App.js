@@ -3,6 +3,7 @@ import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import Settings from './Settings';
+import Article from './Article';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
@@ -50,6 +51,7 @@ class App extends Component {
           <Route exact path="/login" component={ Login } />
           <Route exact path="/register" component={ Register } />
           <Route exact path="/settings" component={ Settings } />
+          <Route exact path="/article" component={ Article } />
         </div>
       </Router>
     );

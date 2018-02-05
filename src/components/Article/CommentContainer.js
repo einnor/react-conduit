@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CommentContainer extends Container {
+class CommentContainer extends Component {
 
 }
 
