@@ -9,7 +9,8 @@ const mapStateToProps = state => ({ ...state.auth });
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value => dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'email', value }),
   onChangePassword: value => dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
-  onSubmit: (email, password) => dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
+  onSubmit: (email, password) => dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) }),
+  onUnload: () => dispatch({ type: 'LOGIN_PAGE_UNLOADED' })
 });
 
 class Login extends Component {
@@ -22,6 +23,10 @@ class Login extends Component {
       event.preventDefault();
       this.props.onSubmit(email, password);
     };
+  }
+
+  componentWillUnmount() {
+    this.props.onUnload();
   }
 
   render() {
