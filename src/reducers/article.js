@@ -1,7 +1,6 @@
 export default (state = {}, action) => {
   switch(action.type) {
     case 'ARTICLE_PAGE_LOADED':
-    console.log('Loaded');
       return {
         ...state,
         article: action.payload[0].article,
@@ -13,7 +12,7 @@ export default (state = {}, action) => {
       return {
         ...state,
         commentErrors: action.error ? action.payload.errors : null,
-        comments: action.error ? 
+        comments: action.error ?
           null :
           (state.comments || []).concat([action.payload.comment])
       };
