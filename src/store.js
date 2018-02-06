@@ -15,7 +15,7 @@ const reducer = combineReducers({
   common,
   home,
   settings,
-  profile
+  profile,
 });
 
 const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware);

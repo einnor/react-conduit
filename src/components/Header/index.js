@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import LoggedInView from './LoggedInView';
 import LoggedOutView from './LoggedOutView';
 
@@ -13,8 +13,8 @@ class Header extends Component {
             {this.props.appName.toLowerCase()}
           </Link>
 
-          <LoggedOutView currentUser={ this.props.currentUser } />
-          <LoggedInView currentUser={ this.props.currentUser } />
+          <LoggedOutView currentUser={this.props.currentUser} />
+          <LoggedInView currentUser={this.props.currentUser} />
 
         </div>
       </nav>

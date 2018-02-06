@@ -1,15 +1,15 @@
 export default (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'SETTINGS_SAVED':
       return {
         ...state,
         inProgess: false,
-        errors: action.error ? action.payload.errors : null
+        errors: action.error ? action.payload.errors : null,
       };
     case 'ASYNC_START':
       return {
         ...state,
-        inProgress: true
+        inProgress: true,
       };
     default:
       return state;

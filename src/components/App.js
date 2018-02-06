@@ -14,19 +14,18 @@ import history from '../history';
 const mapStateToProps = state => ({
   appName: state.common.appName,
   currentUser: state.common.currentUser,
-  redirectTo: state.common.redirectTo
+  redirectTo: state.common.redirectTo,
 });
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) => dispatch({ type: 'APP_LOAD', payload, token }),
-  onRedirect: () => dispatch({ type: 'REDIRECT' })
+  onRedirect: () => dispatch({ type: 'REDIRECT' }),
 });
 
 class App extends Component {
-
   componentWillMount() {
     const token = window.localStorage.getItem('jwt');
-    if(token) {
+    if (token) {
       agent.setToken(token);
     }
 
@@ -34,7 +33,7 @@ class App extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.redirectTo) {
+    if (nextProps.redirectTo) {
       history.replace(nextProps.redirectTo);
       this.props.onRedirect();
     }
@@ -42,22 +41,23 @@ class App extends Component {
 
   render() {
     return (
-      <Router history={ history }>
+      <Router history={history}>
         <div>
           <Header
-            appName={ this.props.appName }
-            currentUser={ this.props.currentUser} />
+            appName={this.props.appName}
+            currentUser={this.props.currentUser}
+          />
 
-          <Route exact path="/" component={ Home } />
-          <Route exact path="/login" component={ Login } />
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/settings" component={ Settings } />
-          <Route exact path="/articles/:id" component={ Article } />
-          <Route exact path="/@:username" component={ Profile } />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/articles/:id" component={Article} />
+          <Route exact path="/@:username" component={Profile} />
         </div>
       </Router>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

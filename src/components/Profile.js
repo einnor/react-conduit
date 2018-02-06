@@ -9,21 +9,21 @@ import FollowUserButton from './FollowUserButton';
 const mapStateToProps = state => ({
   ...state.articleList,
   currentUser: state.common.currentUser,
-  profile: state.profile
+  profile: state.profile,
 });
 
 const mapDispatchToProps = dispatch => ({
   onFollow: username => dispatch({ type: 'FOLLOW_USER', payload: agent.Profile.follow(username) }),
   onLoad: payload => dispatch({ type: 'PROFILE_PAGE_LOADED', payload }),
   onUnfollow: username => dispatch({ type: 'UNFOLLOW_USER', payload: agent.Profile.unfollow(username) }),
-  onUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' })
+  onUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' }),
 });
 
 class Profile extends Component {
   componentWillMount() {
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
-      agent.Articles.byAuthor(this.props.match.params.username)
+      agent.Articles.byAuthor(this.props.match.params.username),
     ]));
   }
 
@@ -32,19 +32,21 @@ class Profile extends Component {
   }
 
   renderTabs() {
-    return(
+    return (
       <ul className="nav nav-pills outline-active">
         <li className="nav-item">
           <Link
             className="nav-link active"
-            to={ `@${this.props.profile.username}` } >
+            to={`@${this.props.profile.username}`}
+          >
             My Articles
           </Link>
         </li>
         <li className="nav-item">
           <Link
             className="nav-link"
-            to={ `@${this.props.profile.username}/favorites` } >
+            to={`@${this.props.profile.username}/favorites`}
+          >
             Favorited Articles
           </Link>
         </li>
@@ -54,30 +56,30 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
-    if(!profile) {
+    if (!profile) {
       return null;
     }
 
     const isUser = this.props.currentUser && this.props.currentUser.username === this.props.profile.username;
 
-    return(
+    return (
       <div className="profile-page">
         <div className="user-info">
           <div className="container">
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
 
-                <img src={ profile.image } className="user-img" alt={ profile.username } />
+                <img src={profile.image} className="user-img" alt={profile.username} />
                 <h4>{ profile.username }</h4>
                 <p>{ profile.bio }</p>
 
-                <EditProfileSettings isUser={ isUser } />
+                <EditProfileSettings isUser={isUser} />
                 <FollowUserButton
-                  isUser={ isUser }
-                  user={ profile }
-                  follow={ this.props.onFollow }
-                  unfollow={ this.props.onUnfollow }
-                  />
+                  isUser={isUser}
+                  user={profile}
+                  follow={this.props.onFollow}
+                  unfollow={this.props.onUnfollow}
+                />
 
               </div>
             </div>
@@ -92,7 +94,8 @@ class Profile extends Component {
               </div>
 
               <ArticleList
-                articles={ this.props.articles } />
+                articles={this.props.articles}
+              />
             </div>
 
           </div>
@@ -104,4 +107,4 @@ class Profile extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
-export { Profile as Profile, mapStateToProps as mapStateToProps };
+export { Profile, mapStateToProps };

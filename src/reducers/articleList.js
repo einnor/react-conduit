@@ -1,9 +1,9 @@
 export default (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'HOME_PAGE_LOADED':
       return {
         ...state,
-        articles: action.payload.articles
+        articles: action.payload.articles,
       };
     case 'HOME_PAGE_UNLOADED':
     case 'PROFILE_PAGE_UNLOADED':
@@ -14,8 +14,8 @@ export default (state = {}, action) => {
       return {
         ...state,
         articles: action.payload[1].articles,
-        articlesCount: action.payload[1].articlesCount
-      }
+        articlesCount: action.payload[1].articlesCount,
+      };
     default:
       return state;
   }

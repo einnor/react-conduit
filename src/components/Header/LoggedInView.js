@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const LoggedInView = props => {
-  if(props.currentUser) {
+const LoggedInView = (props) => {
+  if (props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item">
@@ -13,21 +13,22 @@ const LoggedInView = props => {
 
         <li className="nav-item">
           <Link to="editor" className="nav-link">
-            <i className="ion-compose"></i> New Post
+            <i className="ion-compose" /> New Post
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="settings" className="nav-link">
-            <i className="ion-gear-a"></i> Settings
+            <i className="ion-gear-a" /> Settings
           </Link>
         </li>
 
         <li className="nav-item">
           <Link
-          to={ `@${props.currentUser.username}` }
-          className="nav-link">
-            <img src={ props.currentUser.image } className="user-pic" alt={ props.currentUser.username } />
+            to={`@${props.currentUser.username}`}
+            className="nav-link"
+          >
+            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
             { props.currentUser.username }
           </Link>
         </li>
@@ -36,6 +37,6 @@ const LoggedInView = props => {
   }
 
   return null;
-}
+};
 
 export default LoggedInView;

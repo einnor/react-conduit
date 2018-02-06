@@ -1,18 +1,18 @@
 const defaultState = {
   appName: 'React Conduit',
   token: null,
-  currentUser:null,
-  redirectTo: null
+  currentUser: null,
+  redirectTo: null,
 };
 
 export default (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'APP_LOAD':
       return {
         ...state,
         token: action.token || null,
         appLoaded: true,
-        currentUser: action.payload ? action.payload.user : null
+        currentUser: action.payload ? action.payload.user : null,
       };
     case 'REDIRECT':
       return { ...state, redirectTo: null };
@@ -20,19 +20,19 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         redirectTo: action.error ? null : '/',
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? null : action.payload.user,
       };
     case 'DELETE_ARTICLE':
       return {
         ...state,
-        redirectTo: '/'
+        redirectTo: '/',
       };
     case 'LOGOUT':
       return {
         ...state,
         redirectTo: '/',
         token: null,
-        currentUser: null
+        currentUser: null,
       };
     case 'LOGIN':
     case 'REGISTER':
@@ -40,7 +40,7 @@ export default (state = defaultState, action) => {
         ...state,
         redirectTo: action.error ? null : '/',
         token: action.error ? null : action.payload.user.token,
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? null : action.payload.user,
       };
     default:
       return state;

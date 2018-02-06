@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
   onChangePassword: value => dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
   onChangeUsername: value => dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'username', value }),
   onSubmit: (username, email, password) => dispatch({ type: 'REGISTER', payload: agent.Auth.register(username, email, password) }),
-  onUnload: () => dispatch({ type: 'REGISTER_PAGE_UNLOADED' })
+  onUnload: () => dispatch({ type: 'REGISTER_PAGE_UNLOADED' }),
 });
 
 class Register extends Component {
@@ -21,7 +21,7 @@ class Register extends Component {
     this.changeEmail = event => this.props.onChangeEmail(event.target.value);
     this.changePassword = event => this.props.onChangePassword(event.target.value);
     this.changeUsername = event => this.props.onChangeUsername(event.target.value);
-    this.submitForm = (username, email, password) => event => {
+    this.submitForm = (username, email, password) => (event) => {
       event.preventDefault();
       this.props.onSubmit(username, email, password);
     };
@@ -47,9 +47,9 @@ class Register extends Component {
                 </Link>
               </p>
 
-              <ListErrors errors={ this.props.errors } />
+              <ListErrors errors={this.props.errors} />
 
-              <form onSubmit={ this.submitForm(username, email, password)}>
+              <form onSubmit={this.submitForm(username, email, password)}>
                 <fieldset>
 
                   <fieldset className="form-group">
@@ -57,8 +57,9 @@ class Register extends Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Username"
-                      value={ username }
-                      onChange={ this.changeUsername } />
+                      value={username}
+                      onChange={this.changeUsername}
+                    />
                   </fieldset>
 
                   <fieldset className="form-group">
@@ -66,8 +67,9 @@ class Register extends Component {
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
-                      value={ email }
-                      onChange={ this.changeEmail } />
+                      value={email}
+                      onChange={this.changeEmail}
+                    />
                   </fieldset>
 
                   <fieldset className="form-group">
@@ -75,14 +77,16 @@ class Register extends Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      value={ password }
-                      onChange={ this.changePassword } />
+                      value={password}
+                      onChange={this.changePassword}
+                    />
                   </fieldset>
 
                   <button
                     className="btn btn-lg btn-primary pull-xs-right"
                     type="submit"
-                    disabled={ this.props.inProgress }>
+                    disabled={this.props.inProgress}
+                  >
                     Sign Up
                   </button>
 

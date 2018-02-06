@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ArticlePreview = props => {
+const ArticlePreview = (props) => {
   const article = props.article;
 
   return (
     <div className="article-preview">
       <div className="article-meta">
-        <Link to={ `@${article.author.username}` }>
-          <img src={article.author.image} alt={ article.author.username } />
+        <Link to={`@${article.author.username}`}>
+          <img src={article.author.image} alt={article.author.username} />
         </Link>
 
         <div className="info">
-          <Link to={ `@${article.author.username}` } className="author">
+          <Link to={`@${article.author.username}`} className="author">
             {article.author.username}
           </Link>
           <span className="date">
@@ -22,8 +22,9 @@ const ArticlePreview = props => {
 
         <div className="pull-xs-right">
           <button
-            className="btn btn-sm btn-outline-primary">
-            <i className="ion-heart"></i> {article.favoritesCount}
+            className="btn btn-sm btn-outline-primary"
+          >
+            <i className="ion-heart" /> {article.favoritesCount}
           </button>
         </div>
       </div>
@@ -34,18 +35,16 @@ const ArticlePreview = props => {
         <span>Read more...</span>
         <ul className="tag-list">
           {
-            article.tagList.map(tag => {
-              return (
-                <li className="tag-default tag-pill tag-outline" key={ tag }>
-                  { tag }
-                </li>
-              )
-            })
+            article.tagList.map(tag => (
+              <li className="tag-default tag-pill tag-outline" key={tag}>
+                { tag }
+              </li>
+              ))
           }
         </ul>
       </Link>
     </div>
   );
-}
+};
 
 export default ArticlePreview;

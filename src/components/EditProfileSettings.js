@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const EditProfileSettings = props => {
-  if(props.isUser) {
-    return(
+const EditProfileSettings = (props) => {
+  if (props.isUser) {
+    return (
       <Link
         to="settings"
-        className="btn btn-sm btn-outline-secondary action-btn">
-        <i className="ion-gear-a"></i> Edit Profile Settings
+        className="btn btn-sm btn-outline-secondary action-btn"
+      >
+        <i className="ion-gear-a" /> Edit Profile Settings
       </Link>
     );
   }

@@ -5,11 +5,11 @@ import agent from '../../agent';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-  appName: state.common.appName
+  appName: state.common.appName,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: (payload) => dispatch({ type: 'HOME_PAGE_LOADED', payload })
+  onLoad: payload => dispatch({ type: 'HOME_PAGE_LOADED', payload }),
 });
 
 class Home extends Component {
@@ -18,10 +18,10 @@ class Home extends Component {
   }
 
   render() {
-    return(
+    return (
       <div className="home-page">
 
-        <Banner appName={ this.props.appName } />
+        <Banner appName={this.props.appName} />
 
         <div className="container page">
           <div className="row">
