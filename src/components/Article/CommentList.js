@@ -1,5 +1,6 @@
-import Comment from './Comment';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Comment from './Comment';
 
 const CommentList = props => (
   <div>
@@ -15,5 +16,11 @@ const CommentList = props => (
       }
   </div>
 );
+
+CommentList.propTypes = {
+  comments: PropTypes.node.isRequired,
+  currentUser: PropTypes.node.isRequired,
+  slug: PropTypes.string.isRequired,
+};
 
 export default CommentList;

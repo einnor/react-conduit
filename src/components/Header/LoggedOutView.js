@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -27,6 +28,10 @@ const LoggedOutView = (props) => {
   }
 
   return null;
+};
+
+LoggedOutView.propTypes = {
+  currentUser: PropTypes.node.isRequired,
 };
 
 export default LoggedOutView;

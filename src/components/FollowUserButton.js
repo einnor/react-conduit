@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FollowUserButton = (props) => {
   if (props.isUser) {
@@ -31,6 +32,15 @@ const FollowUserButton = (props) => {
       { props.user.following ? 'Unfollow' : 'Follow' } { props.user.username }
     </button>
   );
+};
+
+FollowUserButton.propTypes = {
+  isUser: PropTypes.bool.isRequired,
+  following: PropTypes.bool.isRequired,
+  user: PropTypes.node.isRequired,
+  username: PropTypes.string.isRequired,
+  follow: PropTypes.func.isRequired,
+  unFollow: PropTypes.func.isRequired,
 };
 
 export default FollowUserButton;

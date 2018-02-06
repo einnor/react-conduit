@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ArticleList from './ArticleList';
 import { Link } from 'react-router-dom';
-import agent from '../agent';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import ArticleList from './ArticleList';
+import agent from '../agent';
 import EditProfileSettings from './EditProfileSettings';
 import FollowUserButton from './FollowUserButton';
 
@@ -55,12 +56,13 @@ class Profile extends Component {
   }
 
   render() {
-    const profile = this.props.profile;
+    const { profile } = this.props;
     if (!profile) {
       return null;
     }
 
-    const isUser = this.props.currentUser && this.props.currentUser.username === this.props.profile.username;
+    const isUser = this.props.currentUser &&
+    this.props.currentUser.username === this.props.profile.username;
 
     return (
       <div className="profile-page">
@@ -105,6 +107,18 @@ class Profile extends Component {
     );
   }
 }
+
+Profile.propTypes = {
+  profile: PropTypes.node.isRequired,
+  currentUser: PropTypes.node.isRequired,
+  username: PropTypes.string.isRequired,
+  match: PropTypes.node.isRequired,
+  onFollow: PropTypes.func.isRequired,
+  onUnfollow: PropTypes.func.isRequired,
+  onLoad: PropTypes.func.isRequired,
+  onUnload: PropTypes.func.isRequired,
+  articles: PropTypes.node.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 export { Profile, mapStateToProps };

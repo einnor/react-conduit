@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const LoggedInView = (props) => {
   if (props.currentUser) {
@@ -28,7 +29,11 @@ const LoggedInView = (props) => {
             to={`@${props.currentUser.username}`}
             className="nav-link"
           >
-            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
+            <img
+              src={props.currentUser.image}
+              className="user-pic"
+              alt={props.currentUser.username}
+            />
             { props.currentUser.username }
           </Link>
         </li>
@@ -37,6 +42,12 @@ const LoggedInView = (props) => {
   }
 
   return null;
+};
+
+LoggedInView.propTypes = {
+  currentUser: PropTypes.node.isRequired,
+  username: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default LoggedInView;

@@ -1,8 +1,9 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Banner from './Banner';
 import MainView from './MainView';
-import React, { Component } from 'react';
 import agent from '../../agent';
-import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
@@ -42,5 +43,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  token: PropTypes.string.isRequired,
+  appName: PropTypes.string.isRequired,
+  onLoad: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

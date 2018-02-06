@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArticleActions from './ArticleActions';
 
 const ArticleMeta = (props) => {
-  const article = props.article;
+  const { article } = props;
 
   return (
     <div className="article-meta">
@@ -23,6 +24,11 @@ const ArticleMeta = (props) => {
       </div>
     </div>
   );
+};
+
+ArticleMeta.propTypes = {
+  article: PropTypes.node.isRequired,
+  canModify: PropTypes.bool.isRequired,
 };
 
 export default ArticleMeta;

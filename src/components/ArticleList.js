@@ -1,5 +1,6 @@
-import ArticlePreview from './ArticlePreview';
 import React from 'react';
+import PropTypes from 'prop-types';
+import ArticlePreview from './ArticlePreview';
 
 const ArticleList = (props) => {
   if (!props.articles) {
@@ -23,6 +24,10 @@ const ArticleList = (props) => {
       }
     </div>
   );
+};
+
+ArticleList.propTypes = {
+  articles: PropTypes.node.isRequired,
 };
 
 export default ArticleList;

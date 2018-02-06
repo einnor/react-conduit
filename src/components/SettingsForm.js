@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SettingsForm extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class SettingsForm extends Component {
 
     // Function that updates the state based on an event
     this.updateState = field => (ev) => {
-      const state = this.state;
+      const { state } = this;
       const newState = Object.assign({}, state, { [field]: ev.target.value });
       this.setState(newState);
     };
@@ -120,5 +121,11 @@ class SettingsForm extends Component {
     );
   }
 }
+
+SettingsForm.propTypes = {
+  currentUser: PropTypes.node.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
+  inProgress: PropTypes.bool.isRequired,
+};
 
 export default SettingsForm;

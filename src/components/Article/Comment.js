@@ -1,9 +1,10 @@
-import DeleteButton from './DeleteButton';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import DeleteButton from './DeleteButton';
 
 const Comment = (props) => {
-  const comment = props.comment;
+  const { comment } = props;
   const show = props.currentUser && props.currentUser.username === comment.author.username;
 
   return (
@@ -16,7 +17,11 @@ const Comment = (props) => {
           to={`@${comment.author.username}`}
           className="comment-author"
         >
-          <img src={comment.author.image} className="comment-author-img" alt={comment.author.username} />
+          <img
+            src={comment.author.image}
+            className="comment-author-img"
+            alt={comment.author.username}
+          />
         </Link>
         &nbsp;
         <Link
@@ -32,6 +37,12 @@ const Comment = (props) => {
       </div>
     </div>
   );
+};
+
+Comment.propTypes = {
+  comment: PropTypes.node.isRequired,
+  currentUser: PropTypes.node.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default Comment;

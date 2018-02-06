@@ -1,25 +1,31 @@
 import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import LoggedInView from './LoggedInView';
 import LoggedOutView from './LoggedOutView';
 
-class Header extends Component {
-  render() {
-    return (
-      <nav className="navbar navbar-light">
-        <div className="header">
 
-          <Link to="/" className="navbar-brand">
-            {this.props.appName.toLowerCase()}
-          </Link>
+const Header = props => (
+  <nav className="navbar navbar-light">
+    <div className="header">
 
-          <LoggedOutView currentUser={this.props.currentUser} />
-          <LoggedInView currentUser={this.props.currentUser} />
+      <Link
+        to="/"
+        className="navbar-brand"
+      >
+        {props.appName.toLowerCase()}
+      </Link>
 
-        </div>
-      </nav>
-    );
-  }
-}
+      <LoggedOutView currentUser={props.currentUser} />
+      <LoggedInView currentUser={props.currentUser} />
+
+    </div>
+  </nav>
+);
+
+Header.propTypes = {
+  appName: PropTypes.string.isRequired,
+  currentUser: PropTypes.node.isRequired,
+};
 
 export default Header;

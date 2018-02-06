@@ -1,3 +1,7 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Router, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Home from './Home';
 import Login from './Login';
@@ -5,13 +9,11 @@ import Register from './Register';
 import Settings from './Settings';
 import Article from './Article';
 import Profile from './Profile';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
 import agent from '../agent';
 import history from '../history';
 
 const mapStateToProps = state => ({
+  appLoaded: state.common.appLoaded,
   appName: state.common.appName,
   currentUser: state.common.currentUser,
   redirectTo: state.common.redirectTo,
@@ -59,5 +61,13 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  appName: PropTypes.string.isRequired,
+  currentUser: PropTypes.node.isRequired,
+  onLoad: PropTypes.func.isRequired,
+  redirectTo: PropTypes.string.isRequired,
+  onRedirect: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

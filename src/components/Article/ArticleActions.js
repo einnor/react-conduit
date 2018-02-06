@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 import agent from '../../agent';
 
 const mapDispatchToProps = dispatch => ({
@@ -33,6 +34,12 @@ const ArticleActions = (props) => {
   return (
     <span />
   );
+};
+
+ArticleActions.propTypes = {
+  article: PropTypes.node.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  canModify: PropTypes.func.isRequired,
 };
 
 export default connect(() => ({}), mapDispatchToProps)(ArticleActions);

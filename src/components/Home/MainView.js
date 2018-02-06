@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ArticleList from '../ArticleList';
 import agent from '../../agent';
 
@@ -12,15 +13,22 @@ const YourFeedTab = (props) => {
 
     return (
       <li className="nav-item">
-        <a href=""
-            className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
-            onClick={clickHandler}>
+        <button
+          className={props.tab === 'feed' ? 'nav-link active' : 'nav-link'}
+          onClick={clickHandler}
+        >
           Your Feed
-        </a>
+        </button>
       </li>
     );
   }
   return null;
+};
+
+YourFeedTab.propTypes = {
+  token: PropTypes.string.isRequired,
+  tab: PropTypes.string.isRequired,
+  onTabClick: PropTypes.func.isRequired,
 };
 
 const GlobalFeedTab = (props) => {
@@ -30,14 +38,20 @@ const GlobalFeedTab = (props) => {
   };
   return (
     <li className="nav-item">
-      <a
+      <button
         href=""
-        className={ props.tab === 'all' ? 'nav-link active' : 'nav-link' }
-        onClick={clickHandler}>
+        className={props.tab === 'all' ? 'nav-link active' : 'nav-link'}
+        onClick={clickHandler}
+      >
         Global Feed
-      </a>
+      </button>
     </li>
   );
+};
+
+GlobalFeedTab.propTypes = {
+  tab: PropTypes.string.isRequired,
+  onTabClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -46,7 +60,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onTabClick: (tab, payload) => dispatch({ type: 'CHANGE_TAB', tab, payload })
+  onTabClick: (tab, payload) => dispatch({ type: 'CHANGE_TAB', tab, payload }),
 });
 
 const MainView = props => (
@@ -69,5 +83,12 @@ const MainView = props => (
     <ArticleList articles={props.articles} />
   </div>
 );
+
+MainView.propTypes = {
+  token: PropTypes.string.isRequired,
+  tab: PropTypes.string.isRequired,
+  onTabClick: PropTypes.func.isRequired,
+  articles: PropTypes.node.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ArticlePreview = (props) => {
-  const article = props.article;
+  const { article } = props;
 
   return (
     <div className="article-preview">
@@ -45,6 +46,10 @@ const ArticlePreview = (props) => {
       </Link>
     </div>
   );
+};
+
+ArticlePreview.propTypes = {
+  article: PropTypes.node.isRequired,
 };
 
 export default ArticlePreview;

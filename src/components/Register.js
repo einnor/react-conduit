@@ -1,8 +1,9 @@
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ListErrors from './ListErrors';
 import agent from '../agent';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -100,5 +101,18 @@ class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  inProgress: PropTypes.bool.isRequired,
+  errors: PropTypes.node.isRequired,
+  onChangeEmail: PropTypes.func.isRequired,
+  onChangePassword: PropTypes.func.isRequired,
+  onChangeUsername: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onUnload: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

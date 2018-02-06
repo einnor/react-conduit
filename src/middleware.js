@@ -10,13 +10,15 @@ const promiseMiddleware = store => next => (action) => {
 
     action.payload.then(
       (res) => {
-        action.payload = res;
-        store.dispatch(action);
+        const act = action;
+        act.payload = res;
+        store.dispatch(act);
       },
       (error) => {
-        action.error = true;
-        action.payload = error.response.body;
-        store.dispatch(action);
+        const act = action;
+        act.error = true;
+        act.payload = error.response.body;
+        store.dispatch(act);
       },
     );
 
@@ -26,7 +28,7 @@ const promiseMiddleware = store => next => (action) => {
   next(action);
 };
 
-const localStorageMiddleware = store => next => (action) => {
+const localStorageMiddleware = () => next => (action) => {
   if (action.type === 'REGISTER' || action.type === 'LOGIN') {
     if (!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token);

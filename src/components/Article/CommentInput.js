@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import agent from '../../agent';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import agent from '../../agent';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: payload => dispatch({ type: 'ADD_COMMENT', payload }),
@@ -56,5 +57,11 @@ class CommentInput extends Component {
     );
   }
 }
+
+CommentInput.propTypes = {
+  slug: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  currentUser: PropTypes.node.isRequired,
+};
 
 export default connect(() => ({}), mapDispatchToProps)(CommentInput);

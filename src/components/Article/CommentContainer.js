@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 import ListErrors from '../ListErrors';
@@ -35,6 +36,13 @@ const CommentContainer = (props) => {
       />
     </div>
   );
+};
+
+CommentContainer.propTypes = {
+  currentUser: PropTypes.node.isRequired,
+  errors: PropTypes.node.isRequired,
+  comments: PropTypes.node.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default CommentContainer;

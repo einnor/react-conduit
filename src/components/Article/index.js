@@ -1,9 +1,10 @@
-import ArticleMeta from './ArticleMeta';
-import CommentContainer from './CommentContainer';
-import React, { Component } from 'react';
-import agent from '../../agent';
 import { connect } from 'react-redux';
 import marked from 'marked';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ArticleMeta from './ArticleMeta';
+import CommentContainer from './CommentContainer';
+import agent from '../../agent';
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -86,5 +87,15 @@ class Article extends Component {
     );
   }
 }
+
+Article.propTypes = {
+  onLoad: PropTypes.func.isRequired,
+  onUnload: PropTypes.func.isRequired,
+  match: PropTypes.node.isRequired,
+  article: PropTypes.node.isRequired,
+  currentUser: PropTypes.node.isRequired,
+  comments: PropTypes.node.isRequired,
+  commentErrors: PropTypes.node.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

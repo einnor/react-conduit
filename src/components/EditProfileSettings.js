@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const EditProfileSettings = (props) => {
   if (props.isUser) {
@@ -13,6 +14,10 @@ const EditProfileSettings = (props) => {
     );
   }
   return null;
+};
+
+EditProfileSettings.propTypes = {
+  isUser: PropTypes.bool.isRequired,
 };
 
 export default EditProfileSettings;
