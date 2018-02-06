@@ -26,6 +26,7 @@ const Articles = {
   all: (page = 10) => requests.get(`/articles?limit=${page}`),
   byAuthor: author => requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
   favoritedBy: author => requests.get(`/articles?favorited=${encodeURIComponent(author)}&limit=5`),
+  feed: () => requests.get('/articles/feed?limit=10'),
   get: slug => requests.get(`/articles/${slug}`),
   del: slug => requests.del(`/articles/${slug}`),
 };

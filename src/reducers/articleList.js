@@ -9,6 +9,13 @@ export default (state = {}, action) => {
     case 'PROFILE_PAGE_UNLOADED':
     case 'PROFILE_FAVORITES_PAGE_UNLOADED':
       return {};
+    case 'CHANGE_TAB':
+      return {
+        ...state,
+        articles: action.payload.articles,
+        articlesCount: action.payload.articlesCount,
+        tab: action.tab,
+      };
     case 'PROFILE_PAGE_LOADED':
     case 'PROFILE_FAVORITES_PAGE_LOADED':
       return {

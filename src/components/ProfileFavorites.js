@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
   onUnload: () => dispatch({ type: 'PROFILE_FAVORITES_PAGE_UNLOADED' }),
 });
 
-class ProfileFavorites extends Component {
+class ProfileFavorites extends Profile {
   renderTabs() {
     return (
       <ul className="nav nav-pills outline-active">
