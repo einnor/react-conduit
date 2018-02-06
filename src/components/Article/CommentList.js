@@ -7,16 +7,16 @@ const CommentList = props => {
       {
         props.comments.map(comment => {
           return(
-            <Comments
+            <Comment
               comment={ comment }
               currentUser={ props.currentUser }
               slug={ props.slug }
               key={ comment.id } />
           );
-        });
+        })
       }
-      </div>
-  ));
+    </div>
+  );
 };
 
 export default CommentList;

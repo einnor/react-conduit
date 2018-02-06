@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => ({
 
 class Article extends Component {
   componentWillMount() {
-    console.log(this.props);
     this.props.onLoad(Promise.all([
       agent.Articles.get(this.props.match.params.id),
       agent.Comments.forArticle(this.props.match.params.id)
