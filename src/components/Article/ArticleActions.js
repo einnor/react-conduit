@@ -1,20 +1,20 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import agent from '../../agent';
-import { connect} from 'react-redux';
 
 const mapDispatchToProps = dispatch => ({
   onClickDelete: payload => dispatch({ type: 'DELETE_ARTICLE', payload })
 });
 
 const ArticleActions = (props) => {
-  const article = props.article;
+  const { article } = props;
   const del = () => {
     props.onClickDelete(agent.Articles.del(article.slug));
   };
 
-  if(props.canModify) {
-    return(
+  if (props.canModify) {
+    return (
       <span>
         <Link
           to={ `/editor/${article.slug}` }
