@@ -16,6 +16,7 @@ const requests = {
 
 const Articles = {
   all: page => requests.get(`/articles?limit=10`),
+  byAuthor: author => requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
   get: slug => requests.get(`/articles/${slug}`),
   del: slug => requests.del(`/articles/${slug}`)
 };
@@ -33,6 +34,12 @@ const Auth = {
   save: user => requests.put('/user', { user })
 };
 
+const Profile = {
+  follow: username => requests.post(`/profiles/${username}/follow`),
+  get: username => requests.get(`/profiles/${username}`),
+  unfollow: username => requests.del(`/profiles/${username}/follow`)
+};
+
 let token = null;
 
 let tokenPlugin = req => {
@@ -45,5 +52,6 @@ export default {
   Articles,
   Comments,
   Auth,
+  Profile
   setToken: _token => { token = _token; }
  };
