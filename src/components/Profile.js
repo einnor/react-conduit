@@ -3,6 +3,8 @@ import ArticleList from './ArticleList';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
+import EditProfileSettings from './EditProfileSettings';
+import FollowUserButton from './FollowUserButton';
 
 const mapStateToProps = state => ({
   ...state.articleList,
@@ -21,7 +23,7 @@ class Profile extends Component {
   componentWillMount() {
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
-      agent.articles.byAuthor(this.props.match.params.username)
+      agent.Articles.byAuthor(this.props.match.params.username)
     ]));
   }
 
@@ -30,22 +32,24 @@ class Profile extends Component {
   }
 
   renderTabs() {
-    <ul className="nav nav-pills outline-active">
-      <li className="nav-item">
-        <Link
-          className="nav-link active"
-          tp={ `@${this.props.profile.username}` } >
-          My Articles
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
-          className="nav-link"
-          tp={ `@${this.props.profile.username}/favorites` } >
-          Favorited Articles
-        </Link>
-      </li>
-    </ul>
+    return(
+      <ul className="nav nav-pills outline-active">
+        <li className="nav-item">
+          <Link
+            className="nav-link active"
+            to={ `@${this.props.profile.username}` } >
+            My Articles
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            to={ `@${this.props.profile.username}/favorites` } >
+            Favorited Articles
+          </Link>
+        </li>
+      </ul>
+    );
   }
 
   render() {
@@ -63,7 +67,7 @@ class Profile extends Component {
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
 
-                <img src={ profile.image } className="user-img" />
+                <img src={ profile.image } className="user-img" alt={ profile.username } />
                 <h4>{ profile.username }</h4>
                 <p>{ profile.bio }</p>
 

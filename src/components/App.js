@@ -4,6 +4,7 @@ import Login from './Login';
 import Register from './Register';
 import Settings from './Settings';
 import Article from './Article';
+import Profile from './Profile';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
@@ -52,6 +53,7 @@ class App extends Component {
           <Route exact path="/register" component={ Register } />
           <Route exact path="/settings" component={ Settings } />
           <Route exact path="/articles/:id" component={ Article } />
+          <Route exact path="/@:username" component={ Profile } />
         </div>
       </Router>
     );
