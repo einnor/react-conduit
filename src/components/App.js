@@ -9,6 +9,7 @@ import Register from './Register';
 import Settings from './Settings';
 import Article from './Article';
 import Profile from './Profile';
+import Editor from './Editor';
 import agent from '../agent';
 import history from '../history';
 
@@ -56,6 +57,8 @@ class App extends Component {
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/articles/:id" component={Article} />
           <Route exact path="/@:username" component={Profile} />
+          <Route exact path="/editor" component={Editor} />
+          <Route exact path="/editor/:slug" component={Editor} />
         </div>
       </Router>
     );
