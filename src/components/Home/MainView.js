@@ -13,12 +13,15 @@ const YourFeedTab = (props) => {
 
     return (
       <li className="nav-item">
-        <button
+        <span
+          onKeyPress={null}
+          tabIndex={0}
+          role="button"
           className={props.tab === 'feed' ? 'nav-link active' : 'nav-link'}
           onClick={clickHandler}
         >
           Your Feed
-        </button>
+        </span>
       </li>
     );
   }
@@ -31,6 +34,29 @@ YourFeedTab.propTypes = {
   onTabClick: PropTypes.func.isRequired,
 };
 
+const TagFilterTab = (props) => {
+  if (!props.tag) {
+    return null;
+  }
+
+  return (
+    <li className="nav-item">
+      <span
+        tabIndex={0}
+        onKeyPress={null}
+        role="button"
+        className="nav-link active"
+      >
+        Your Feed
+      </span>
+    </li>
+  );
+};
+
+TagFilterTab.propTypes = {
+  tag: PropTypes.string.isRequired,
+};
+
 const GlobalFeedTab = (props) => {
   const clickHandler = (ev) => {
     ev.preventDefault();
@@ -38,13 +64,15 @@ const GlobalFeedTab = (props) => {
   };
   return (
     <li className="nav-item">
-      <button
-        href=""
+      <span
+        tabIndex={0}
+        onKeyPress={null}
+        role="button"
         className={props.tab === 'all' ? 'nav-link active' : 'nav-link'}
         onClick={clickHandler}
       >
         Global Feed
-      </button>
+      </span>
     </li>
   );
 };
@@ -77,6 +105,10 @@ const MainView = props => (
           tab={props.tab}
           onTabClick={props.onTabClick}
         />
+
+        <TagFilterTab
+          tag={props.tag}
+        />
       </ul>
     </div>
 
@@ -89,6 +121,7 @@ MainView.propTypes = {
   tab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
   articles: PropTypes.node.isRequired,
+  tag: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);

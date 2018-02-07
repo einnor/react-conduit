@@ -3,7 +3,17 @@ export default (state = {}, action) => {
     case 'HOME_PAGE_LOADED':
       return {
         ...state,
+        articles: action.payload[1].articles,
+        articlesCount: action.payload[1].articlesCount,
+        tab: action.tab,
+      };
+    case 'APPLY_TAG_FILTER':
+      return {
+        ...state,
         articles: action.payload.articles,
+        articlesCount: action.payload.articlesCount,
+        tab: null,
+        tag: action.tag,
       };
     case 'HOME_PAGE_UNLOADED':
     case 'PROFILE_PAGE_UNLOADED':
