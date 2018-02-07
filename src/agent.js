@@ -22,12 +22,15 @@ const requests = {
   del: url => superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
 };
 
+const limit = (count, page) => `limit=${count}&offset=${page ? page * count : 0}`;
+const encode = encodeURIComponent;
+
 const Articles = {
-  all: (page = 10) => requests.get(`/articles?limit=${page}`),
-  byAuthor: author => requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
-  byTag: tag => requests.get(`/articles?tag=${encodeURIComponent(tag)}&limit=10`),
-  favoritedBy: author => requests.get(`/articles?favorited=${encodeURIComponent(author)}&limit=5`),
-  feed: () => requests.get('/articles/feed?limit=10'),
+  all: page => requests.get(`/articles?${limit(10, page)}`),
+  byAuthor: (author, page) => requests.get(`/articles?author=${encode(author)}&${limit(10, page)}`),
+  byTag: tag => requests.get(`/articles?tag=${encode(tag)}&${limit(10)}`),
+  favoritedBy: author => requests.get(`/articles?favorited=${encode(author)}&${limit(5)}`),
+  feed: () => requests.get(`/articles/feed?${limit(10)}`),
   get: slug => requests.get(`/articles/${slug}`),
   del: slug => requests.del(`/articles/${slug}`),
 };

@@ -12,6 +12,22 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ProfileFavorites extends Profile {
+  componentWillMount() {
+    this.props.onLoad(Promise.all([
+      agent.Profile.get(this.props.match.params.username),
+      agent.Articles.favoritedBy(this.props.match.params.username),
+    ]));
+  }
+
+  componentWillUnmount() {
+    this.props.onUnload();
+  }
+
+  onSetPage(page) {
+    const promise = agent.Articles.favoritedBy(this.prps.profile.username, page);
+    this.props.onSetPage(page, promise);
+  }
+
   renderTabs() {
     return (
       <ul className="nav nav-pills outline-active">
