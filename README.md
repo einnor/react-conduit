@@ -1,3 +1,8 @@
+React Conduit
+=============
+
+Click [*Here*](https://react-conduit.firebaseapp.com/) to see a demo of the application, hosted on [*Firebase*](https://firebase.google.com/).
+
 ## General functionality:
 
 - Authenticate users via JWT (login/signup pages + logout button on settings page)
