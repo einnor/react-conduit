@@ -27,6 +27,11 @@ export default (state = defaultState, action) => {
         ...state,
         redirectTo: '/',
       };
+    case 'ARTICLE_SUBMITTED':
+      return {
+        ...state,
+        redirectTo: `/articles/${action.payload.article.slug}`,
+      };
     case 'LOGOUT':
       return {
         ...state,

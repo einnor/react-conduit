@@ -71,7 +71,7 @@ class Editor extends Component {
       }
       return this.props.onLoad(null);
     }
-    return this.props.onLoad(null);
+    // return this.props.onLoad(null);
   }
 
   componentWillUnmount() {
